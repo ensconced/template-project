@@ -20,5 +20,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ title: "alembic" })],
+  plugins: [new HtmlWebpackPlugin({ title: "template project" })],
 };
