@@ -12,13 +12,21 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loader: "babel-loader",
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-typescript"],
+          },
+        },
       },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
     ],
+  },
+  resolve: {
+    extensions: [".js", ".json", ".ts"],
   },
   plugins: [new HtmlWebpackPlugin({ title: "template project" })],
 };
