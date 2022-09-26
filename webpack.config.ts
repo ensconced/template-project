@@ -1,9 +1,11 @@
-import HtmlWebpackPlugin = require("html-webpack-plugin");
-import path = require("path");
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import path from "path";
+
+const TEN_MEGABYTES = 10 * 1024 * 1024;
 
 module.exports = {
-  mode: "development",
-  entry: "./src/index.ts",
+  mode: "production",
+  entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "index_bundle.js",
@@ -11,11 +13,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-typescript"],
+            presets: ["@babel/preset-typescript", "@babel/preset-react"],
           },
         },
       },
@@ -25,8 +27,12 @@ module.exports = {
       },
     ],
   },
+  performance: {
+    maxAssetSize: TEN_MEGABYTES,
+    maxEntrypointSize: TEN_MEGABYTES,
+  },
   resolve: {
-    extensions: [".js", ".json", ".ts"],
+    extensions: [".js", ".json", ".ts", ".tsx"],
   },
   plugins: [new HtmlWebpackPlugin({ title: "template project" })],
 };

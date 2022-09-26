@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
-    "strict": true
-  }
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noUncheckedIndexedAccess": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "target": "ES2020"
+  },
+  "include": ["src/**/*", ".eslintrc.js", "webpack.config.ts"]
 }
